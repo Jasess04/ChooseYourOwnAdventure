@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 namespace ChooseYourOwnAdventure
 {
+    //Implement a “master loop” console application where the user can repeatedly enter
+      //commands/perform actions, including choosing to exit the program//
     class Program 
     {
         static void Main(string[] args)
@@ -72,7 +74,8 @@ namespace ChooseYourOwnAdventure
                 };
             }
         }
-
+        //Calculate and display data based on an external factor(ex: get the current date, and
+        //display how many days remaining until some event) The user inputs a date and the real time days until their next birthday is the output//
         public Character GeneratePlayer()
         {
             Character Player = new Protagonist();
@@ -123,6 +126,8 @@ namespace ChooseYourOwnAdventure
             while (EventEnd == false && EventQuit == false) //If the player chooses to quit it breaks the loop.//
                                                             //But if the player beats the game, it should end the loop as well.
                                                             //there is a separate boolean for each because beating the game has a congrats attached. 
+                                                            //This Implements a “master loop” console application where the user can repeatedly enter
+                                                            //commands / perform actions, including choosing to exit the program//
             {
                 Console.WriteLine("You find yourself in a dark room. It has a door on each wall. " +
                 "You hear voices coming from the East and South rooms. What would you like to do? (\"Quit\" to exit)");
@@ -180,24 +185,30 @@ namespace ChooseYourOwnAdventure
                         Console.WriteLine("You go to the East room.");
                         if (!HasMetJannette)
                         {
-                            //Description of Jannette; she's bald!
-                            //Jannette introduces herself?
+                            Console.WriteLine("Hiya I'm Janet! I'll be helping you with your doomed quest to put the bear back to sleep!");
+                            //Jannette introduces herself
                         }
                         if (HasKey)
                         {
                             if (HasSandwich)
                             {
+                                Console.WriteLine("We have the sandwich! Now its time for you to bite it! This will be exciting to watch. " +
+                                                "I've only seen 7 succeed and 942 fail. Based on your muscle mass, i'm betting on the bear!");
                                 //Let's feed the bear!
                             }
                             else
                             {
                                 //Jannette gets the sandwich
+                                Console.WriteLine("Ok, I have acquired the sandwich. Are you sure you don't want to eat it yourself? Lets be fair. " +
+                                                  "You can either have a bomb last meal or be a meal and lose the magic sandwich");
                                 HasSandwich = true;
                             }
                         }
                         else
                         {
                             //Jannette drops a hint?
+                            Console.WriteLine(" Oh were you hoping for help? Maybe throw your hands up and it'll get freightened that works 0% of the time!" +
+                                                "Maybe you'll be the first. ");
                         }
 
                         Console.WriteLine("You return to the center room.");
@@ -209,15 +220,19 @@ namespace ChooseYourOwnAdventure
                         if (!HasMetRodrigquez)
                         { 
                             //Desription of Rod
-                            //Rod introduces himself
+                             Console.WriteLine("My friend! I am Rodriguez de la cruz the 32nd and a half! " +
+                                                "! Don't listen to miss wet blanket over there! You've got this eh!?");
                         }
                         if (HasKey)
                         {
                             //Rodriguez drops a hint?
+                            Console.WriteLine("Jannette and I have been stuck in this cave for years waiting for someone to feed that mangey miscreant!" +
+                                "I believe you are the one! And you shut it jannette! Don't mind her, she just likes watching the new challenger get torn" +
+                                "limb from limb. You must get the sandwich into the bears mouth. I assume taking your arm out of it is your preference");
                         }
                         else
                         {
-                            //Rodriguz gives the Keo
+                            Console.WriteLine(" Here is the key my friend. Free our souls of this place and put that evil bear back to sleep forever!");
                             HasKey = true;
                         }
 
@@ -248,7 +263,7 @@ namespace ChooseYourOwnAdventure
 
             if (EventEnd)
             {
-               Console.WriteLine("Congrats!");
+               Console.WriteLine("Congrats! Jannette and Rodriguez are free! And you go home victorous and with a completed code louisville project!!!");
             }
         }
 

@@ -34,16 +34,20 @@ namespace ChooseYourOwnAdventure
             return Age;
         }
 
-        // calculated the amount the number of days until the players next birthday
+
+        // This satisfies the Calculate and display data based on an external factor
+        // (ex: get the current date, and display how many days remaining until some event) requirement //
+
+        // calculated the amount the number of days until the players next birthday. 
         public int DaysUntil()
         {
             DateTime Today = DateTime.Now;             
             DateTime NextBirthday = BirthDate;
-            NextBirthday = NextBirthday.AddYears(CalculateAge());
+            NextBirthday = NextBirthday.AddYears(CalculateAge()); 
 
             while(NextBirthday < Today)
             {
-                NextBirthday = NextBirthday.AddYears(1);
+                NextBirthday = NextBirthday.AddYears(1); 
             }
 
             TimeSpan daysUntil = NextBirthday - Today;

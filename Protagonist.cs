@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ChooseYourOwnAdventure
 {
-    class Protagonist : Character  //child of the character class
+    class Protagonist : Character  //Child of the character class
     {
 
     }

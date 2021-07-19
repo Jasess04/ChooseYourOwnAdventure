@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ChooseYourOwnAdventure
 {
-    class Antagonist : Character  // Child of the character class
+    class Antagonist : Character  // Child of the character class. The Antonist is the Evil Bear.
     {
 
     }
