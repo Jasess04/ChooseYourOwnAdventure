@@ -101,7 +101,7 @@ namespace ChooseYourOwnAdventure
         }
 
         ////////////////////////////////////////////////
-        // JOSHUA START HERE - BUILD YO DREAM DUNJINN //
+                // THE DUNGEON BEGINS HERE!!!! //
         ////////////////////////////////////////////////
         public void GameEvents(List<Item> ItemCatalog, List<Character> CharacterCatalog)
         {
@@ -159,12 +159,17 @@ namespace ChooseYourOwnAdventure
                         Console.WriteLine("You go to the North room.");
                         if (HasSandwich)
                         {
-                            //Lay the bear low!
+                            Console.WriteLine(" In the Northern Room you confront the Evil Bear with the sandwich of hope.The Evil Bear lunges at you! " +
+                                "Janette yells! GO FORTH AND FEEL NO DARKNESS! You shove the sandwich into its maw! The bear burps! Stumbles back and " +
+                                "lands on its tuckus! The Evil Bear falls into a deep sleep. The Evil Bear will sleep another year until a new hope" +
+                                "arises.");
+
+
                             EventEnd = true;
                         }
                         else
                         {
-                            //The bear taunts you?
+                            Console.WriteLine("I'll have this sandwich! You and your friends! Bahahaha");
                         }
 
                         Console.WriteLine("You return to the center room.");
