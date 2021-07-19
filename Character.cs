@@ -33,5 +33,23 @@ namespace ChooseYourOwnAdventure
 
             return Age;
         }
+
+        // calculated the amount the number of days until the players next birthday
+        public int DaysUntil()
+        {
+            DateTime Today = DateTime.Now;             
+            DateTime NextBirthday = BirthDate;
+            NextBirthday = NextBirthday.AddYears(CalculateAge());
+
+            while(NextBirthday < Today)
+            {
+                NextBirthday = NextBirthday.AddYears(1);
+            }
+
+            TimeSpan daysUntil = NextBirthday - Today;
+
+            return daysUntil.Days;
+        }
+
     }
 }
