@@ -9,3 +9,5 @@ namespace ChooseYourOwnAdventure
 
     }
 }
+
+//Create an additional class which inherits one or more properties from its parent

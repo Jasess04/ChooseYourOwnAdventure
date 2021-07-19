@@ -27,7 +27,8 @@ namespace ChooseYourOwnAdventure
             Console.WriteLine("Press space bar to exit the game");
             Console.Read(); //May not be needed?
         }
-
+       // Create a dictionary or list, populate it with several values, retrieve at least one value, and
+       //use it in your program
         public List<Item> GenerateItems()
         {
             List<Item> ItemList = new List<Item>();
@@ -87,7 +88,7 @@ namespace ChooseYourOwnAdventure
             while(Parsed == false)
             {
                 String Response = "";
-                Console.WriteLine("Please enter your birthdate DD/MM/YYYY: ");
+                Console.WriteLine("Please enter your birthdate DD/MM/YYYY (with the forward slashes): ");
                 Response = Console.ReadLine();
 
                 if (DateTime.TryParse(Response, out DateTime result) == true)
@@ -111,8 +112,8 @@ namespace ChooseYourOwnAdventure
             Character Player = getProtagonist(CharacterCatalog);
             int DaysUntilNextBirthday = Player.DaysUntil();
 
-            Console.WriteLine("Every man and woman on their birthday must enter the gave of the hungry bear. " +
-                "Unfortunately for you, you drew the short straw. Tough luck bud.");
+            Console.WriteLine("Every man and woman on their birthday must enter the cave of the hungry bear. " +
+                "Unfortunately for you drew the short straw. Tough luck bud.");
             Console.WriteLine("You enter the cave with only " + DaysUntilNextBirthday + " days remaining until your next birthday.");
 
             String quitResponse = "";
@@ -130,7 +131,7 @@ namespace ChooseYourOwnAdventure
                                                             //commands / perform actions, including choosing to exit the program//
             {
                 Console.WriteLine("You find yourself in a dark room. It has a door on each wall. " +
-                "You hear voices coming from the East and South rooms. What would you like to do? (\"Quit\" to exit)");
+                "You hear voices coming from the East and South rooms. What would you like to do? Type w to go west or e to go east. or type \"Quit\" to exit)");
                 /*[1 to go West, 2 to go North, 3 to go East, 4 to go South, 5 to check your surroundings, 6 to quit]*/
                 String Response = Console.ReadLine().ToLower();
                 
