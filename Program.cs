@@ -15,7 +15,7 @@ namespace ChooseYourOwnAdventure
             Character Player = new Character();
 
             ItemCatalog = program.GenerateItems();
-            CharacterCatalog = program.GenerateCharacters(ItemCatalog);
+            CharacterCatalog = program.GenerateCharacters();
 
                 Player = program.GeneratePlayer();
 
@@ -48,28 +48,19 @@ namespace ChooseYourOwnAdventure
           //the characters in the game. Their birthdates and ages as well as the items each character would carry. Again,
           // I settled on a sandwich.
 
-        public List<Character> GenerateCharacters(List<Item> ItemCatalog)
+        public List<Character> GenerateCharacters()
         {
             List<Character> CharList = new List<Character>();
 
-            CharList.Add(new Character() { Name = "Rodrigo", BirthDate = DateTime.Parse("Jan 2 1960"), Inventory = new List<Item>() { } });
-            CharList.Add(new Character() { Name = "Jannette", BirthDate = DateTime.Parse("Oct 14 1987"), Inventory = new List<Item>() { } });
-            CharList.Add(new Character() { Name = "Bear", BirthDate = DateTime.Parse("9 21 1992"), Inventory = new List<Item>() { } });
-            CharList.Add(new Antagonist() { Name = "EVIL Bear", BirthDate = DateTime.Parse("9 21 1992"), Inventory = new List<Item>() { } });
-
-            CharList[0].Inventory.Add(ItemCatalog[0]);
-            CharList[1].Inventory.Add(ItemCatalog[2]);
-            CharList[1].Inventory.Add(ItemCatalog[3]);
-            CharList[2].Inventory.Add(ItemCatalog[3]);
-            CharList[3].Inventory.Add(ItemCatalog[0]);
-            CharList[3].Inventory.Add(ItemCatalog[1]);
-            CharList[3].Inventory.Add(ItemCatalog[2]);
-            CharList[3].Inventory.Add(ItemCatalog[3]);
+            CharList.Add(new Character() { Name = "Rodrigo" });
+            CharList.Add(new Character() { Name = "Jannette" });
+            CharList.Add(new Character() { Name = "Bear" });
+            CharList.Add(new Antagonist() { Name = "EVIL Bear" });
 
             return CharList;
         }
 
-
+        /*
         public void Credits(List<Character> CList)
         {
             foreach (Character c in CList)
@@ -81,11 +72,12 @@ namespace ChooseYourOwnAdventure
                 };
             }
         }
+        */
         //Calculate and display data based on an external factor(ex: get the current date, and
         //display how many days remaining until some event) The user inputs a date and the real time days until their next birthday is the output//
         public Character GeneratePlayer()
         {
-            Character Player = new Protagonist();
+            Protagonist Player = new Protagonist();
             Boolean Parsed = false;
 
             Console.WriteLine("Welcome! Please enter your name: ");
@@ -104,7 +96,8 @@ namespace ChooseYourOwnAdventure
                 }
                 else Console.WriteLine("Please try again...");
             }
-            //Player.BirthDate 
+            //Add inventory
+            Player.Inventory = new List<Item>();
             Console.WriteLine("[PRESS ENTER TO CONTINUE]");
             Console.ReadLine();
             return Player;
@@ -115,7 +108,7 @@ namespace ChooseYourOwnAdventure
         ////////////////////////////////////////////////
         public void GameEvents(List<Item> ItemCatalog, List<Character> CharacterCatalog)
         {
-            Character Player = getProtagonist(CharacterCatalog);
+            Protagonist Player = getProtagonist(CharacterCatalog);
             int DaysUntilNextBirthday = Player.DaysUntil();
 
             Console.WriteLine("Every man and woman on their birthday must enter the cave of the hungry bear. " +
@@ -124,20 +117,22 @@ namespace ChooseYourOwnAdventure
 
             String quitResponse = "";
             Boolean EventQuit = false;
-            Boolean EventEnd = false;
+            Boolean EventSuccess = false;
             Boolean HasSandwich = false;
             Boolean HasKey = false;
             Boolean HasMetJannette = false;
             Boolean HasMetRodrigquez = false;
 
-            while (EventEnd == false && EventQuit == false) //If the player chooses to quit it breaks the loop.//
+            Console.WriteLine("You find yourself in a dark room. It has a door on each wall. " +
+            "You hear voices coming from the East and South rooms.");
+
+            while (EventSuccess == false && EventQuit == false) //If the player chooses to quit it breaks the loop.//
                                                             //But if the player beats the game, it should end the loop as well.
                                                             //there is a separate boolean for each because beating the game has a congrats attached. 
                                                             //This Implements a “master loop” console application where the user can repeatedly enter
                                                             //commands / perform actions, including choosing to exit the program//
             {
-                Console.WriteLine("You find yourself in a dark room. It has a door on each wall. " +
-                "You hear voices coming from the East and South rooms. What would you like to do? Type w to go west or e to go east. or type \"Quit\" to exit)");
+                Console.WriteLine("What would you like to do? (For example, type w to go west or e to go east. Type \"Quit\" to exit.)");
                 /*[1 to go West, 2 to go North, 3 to go East, 4 to go South, 5 to check your surroundings, 6 to quit]*/
                 String Response = Console.ReadLine().ToLower();
                 
@@ -177,14 +172,14 @@ namespace ChooseYourOwnAdventure
                                 "arises.");
 
 
-                            EventEnd = true;
+                            EventSuccess = true;
                         }
                         else
                         {
                             Console.WriteLine("I'll have this sandwich! You and your friends! Bahahaha");
+                            Console.WriteLine("You return to the center room.");
                         }
 
-                        Console.WriteLine("You return to the center room.");
                         break;
 
                     case "e":
@@ -268,13 +263,13 @@ namespace ChooseYourOwnAdventure
               
             }
 
-            if (EventEnd)
+            if (EventSuccess)
             {
                Console.WriteLine("Congrats! Jannette and Rodriguez are free! And you go home victorous and with a completed code louisville project!!!");
             }
         }
 
-        public Character getProtagonist(List<Character> CharacterCatalog)
+        public Protagonist getProtagonist(List<Character> CharacterCatalog)
         {
             Character character = null;
             Type protagonistType = new Protagonist().GetType();
@@ -287,7 +282,7 @@ namespace ChooseYourOwnAdventure
                 }
             }
 
-            return character;
+            return (Protagonist) character;
         }
     }
 }
