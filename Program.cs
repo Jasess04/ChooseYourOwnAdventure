@@ -24,7 +24,7 @@ namespace ChooseYourOwnAdventure
                 //program.Credits(CharacterCatalog);
                 program.GameEvents(ItemCatalog, CharacterCatalog);
 
-            Console.WriteLine("Press space bar to exit the game");
+            Console.WriteLine("Press Space bar and then Enter to exit the game");
             Console.Read(); //May not be needed?
         }
        // Create a dictionary or list, populate it with several values, retrieve at least one value, and
@@ -86,7 +86,7 @@ namespace ChooseYourOwnAdventure
             while(Parsed == false)
             {
                 String Response = "";
-                Console.WriteLine("Please enter your birthdate DD/MM/YYYY (with the forward slashes): ");
+                Console.WriteLine("Please enter your birthdate MM/DD/YYYY (with the forward slashes): ");
                 Response = Console.ReadLine();
 
                 if (DateTime.TryParse(Response, out DateTime result) == true)
@@ -118,6 +118,7 @@ namespace ChooseYourOwnAdventure
             String quitResponse = "";
             Boolean EventQuit = false;
             Boolean EventSuccess = false;
+            Boolean EventFail = false;
             Boolean HasSandwich = false;
             Boolean HasKey = false;
             Boolean HasMetJannette = false;
@@ -126,7 +127,7 @@ namespace ChooseYourOwnAdventure
             Console.WriteLine("You find yourself in a dark room. It has a door on each wall. " +
             "You hear voices coming from the East and South rooms.");
 
-            while (EventSuccess == false && EventQuit == false) //If the player chooses to quit it breaks the loop.//
+            while (EventSuccess == false && EventFail == false && EventQuit == false) //If the player chooses to quit it breaks the loop.//
                                                             //But if the player beats the game, it should end the loop as well.
                                                             //there is a separate boolean for each because beating the game has a congrats attached. 
                                                             //This Implements a “master loop” console application where the user can repeatedly enter
@@ -166,8 +167,8 @@ namespace ChooseYourOwnAdventure
                         Console.WriteLine("You go to the North room.");
                         if (HasSandwich)
                         {
-                            Console.WriteLine(" In the Northern Room you confront the Evil Bear with the sandwich of hope.The Evil Bear lunges at you! " +
-                                "Janette yells! GO FORTH AND FEEL NO DARKNESS! You shove the sandwich into its maw! The bear burps! Stumbles back and " +
+                            Console.WriteLine(" In the Northern Room you confront the Evil Bear with the sandwich of hope. The Evil Bear lunges at you! " +
+                                "Janette yells! GO FORTH AND FEAR NO DARKNESS! You shove the sandwich into its maw! The bear burps! Stumbles back and " +
                                 "lands on its tuckus! The Evil Bear falls into a deep sleep. The Evil Bear will sleep another year until a new hope" +
                                 "arises.");
 
@@ -177,7 +178,8 @@ namespace ChooseYourOwnAdventure
                         else
                         {
                             Console.WriteLine("I'll have this sandwich! You and your friends! Bahahaha");
-                            Console.WriteLine("You return to the center room.");
+
+                            EventFail = true;
                         }
 
                         break;
@@ -188,6 +190,7 @@ namespace ChooseYourOwnAdventure
                         if (!HasMetJannette)
                         {
                             Console.WriteLine("Hiya I'm Janet! I'll be helping you with your doomed quest to put the bear back to sleep!");
+                            HasMetJannette = true; 
                             //Jannette introduces herself
                         }
                         if (HasKey)
@@ -224,7 +227,9 @@ namespace ChooseYourOwnAdventure
                             //Desription of Rod
                              Console.WriteLine("My friend! I am Rodriguez de la cruz the 32nd and a half! " +
                                                 "! Don't listen to miss wet blanket over there! You've got this eh!?");
+                            HasMetRodrigquez = true;
                         }
+
                         if (HasKey)
                         {
                             //Rodriguez drops a hint?
@@ -260,13 +265,20 @@ namespace ChooseYourOwnAdventure
                 {
                     EventQuit = true;
                 }
-              
+
             }
 
             if (EventSuccess)
             {
-               Console.WriteLine("Congrats! Jannette and Rodriguez are free! And you go home victorous and with a completed code louisville project!!!");
+                Console.WriteLine("Congrats! Jannette and Rodriguez are free! And you go home victorous and with a completed code louisville project!!!");
             }
+
+            if (EventFail)
+            {
+                Console.WriteLine("Oh no! The Evil Bear has eaten " + Player.Name + ", Jannette, and Rodriguez! Maybe next time you won't go north without a plan...");
+            }
+
+
         }
 
         public Protagonist getProtagonist(List<Character> CharacterCatalog)
