@@ -14,7 +14,6 @@ namespace ChooseYourOwnAdventure
         {
 
         }
-
         //Overloaded constructor
         public Item(String iName, int iID)
         {

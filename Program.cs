@@ -29,6 +29,9 @@ namespace ChooseYourOwnAdventure
         }
        // Create a dictionary or list, populate it with several values, retrieve at least one value, and
        //use it in your program
+
+          //This is a list of of potential items. I got kinda in over my head so I just went with a sandwich.// 
+          //Don't hold it against me. I wish i'd make a bigger game but ya know...It got too big.//
         public List<Item> GenerateItems()
         {
             List<Item> ItemList = new List<Item>();
@@ -41,6 +44,9 @@ namespace ChooseYourOwnAdventure
 
             return ItemList;
         }
+
+          //the characters in the game. Their birthdates and ages as well as the items each character would carry. Again,
+          // I settled on a sandwich.
 
         public List<Character> GenerateCharacters(List<Item> ItemCatalog)
         {
