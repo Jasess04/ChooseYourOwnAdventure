@@ -60,6 +60,9 @@ namespace ChooseYourOwnAdventure
             return CharList;
         }
 
+
+         // Code no longer in use
+
         /*
         public void Credits(List<Character> CList)
         {
@@ -73,6 +76,9 @@ namespace ChooseYourOwnAdventure
             }
         }
         */
+
+
+
         //Calculate and display data based on an external factor(ex: get the current date, and
         //display how many days remaining until some event) The user inputs a date and the real time days until their next birthday is the output//
         public Character GeneratePlayer()
@@ -88,6 +94,7 @@ namespace ChooseYourOwnAdventure
                 String Response = "";
                 Console.WriteLine("Please enter your birthdate MM/DD/YYYY (with the forward slashes): ");
                 Response = Console.ReadLine();
+
 
                 if (DateTime.TryParse(Response, out DateTime result) == true)
                 {
@@ -111,9 +118,13 @@ namespace ChooseYourOwnAdventure
             Protagonist Player = getProtagonist(CharacterCatalog);
             int DaysUntilNextBirthday = Player.DaysUntil();
 
-            Console.WriteLine("Every man and woman on their birthday must enter the cave of the hungry bear. " +
-                "Unfortunately for you drew the short straw. Tough luck bud.");
-            Console.WriteLine("You enter the cave with only " + DaysUntilNextBirthday + " days remaining until your next birthday.");
+            Console.WriteLine("The Narrotor: Welcome to the Evil bears cavern. " +
+                "Every man and woman on their birthday must enter the cave of the hungry bear. " +
+                "Unfortunately its your birtday and you drew the short straw. Tough luck bud.");
+            Console.WriteLine("You are thrown into the cave " + DaysUntilNextBirthday + " " +
+                "days remaining until your next trial.");
+            Console.WriteLine("[PRESS ENTER TO CONTINUE]");
+            Console.ReadLine();
 
             String quitResponse = "";
             Boolean EventQuit = false;
@@ -124,8 +135,10 @@ namespace ChooseYourOwnAdventure
             Boolean HasMetJannette = false;
             Boolean HasMetRodrigquez = false;
 
-            Console.WriteLine("You find yourself in a dark room. It has a door on each wall. " +
-            "You hear voices coming from the East and South rooms.");
+            Console.WriteLine("Narrator: You are thrown through a hole in the ground and " +
+                              "you find yourself in a dark room. It has a door on each wall. " +
+                              "You hear chuckling to the west and marachi music to the south." +
+                              "You also hear a great growl from the North. A sweet smell from the east");
 
             while (EventSuccess == false && EventFail == false && EventQuit == false) //If the player chooses to quit it breaks the loop.//
                                                             //But if the player beats the game, it should end the loop as well.
@@ -143,23 +156,25 @@ namespace ChooseYourOwnAdventure
                 {
                     case "w":
                     case "west":
-                        Console.WriteLine("You go to the West room.");
+                        Console.WriteLine("Narrator:You go to the West room.");
                         if (HasKey)
                         {
                             if (HasSandwich)
                             {
-                                Console.WriteLine("You find the unlocked box that contained the sandwich.");
+                                Console.WriteLine("Narrator:You find the unlocked box that contained the sandwich.");
+              
                             }
                             else
                             {
-                                Console.WriteLine("You open the locked box and find a sandwich!");
+                                Console.WriteLine("Narrator:You open the locked box and find a sandwich! Go North!");
                                 HasSandwich = true;
                             }
                         } else
                         {
-                            Console.WriteLine("You find a locked box... but have no way of opening it.");
+                            Console.WriteLine("Narrator:You find a locked box... but have no way of opening it." +
+                                              "You return to the center room. You may choose a cardinal direction(North, South, East or West");
                         }
-                        Console.WriteLine("You return to the center room.");
+          
                         break;
 
                     case "n":
@@ -167,17 +182,18 @@ namespace ChooseYourOwnAdventure
                         Console.WriteLine("You go to the North room.");
                         if (HasSandwich)
                         {
-                            Console.WriteLine(" In the Northern Room you confront the Evil Bear with the sandwich of hope. The Evil Bear lunges at you! " +
-                                "Janette yells! GO FORTH AND FEAR NO DARKNESS! You shove the sandwich into its maw! The bear burps! Stumbles back and " +
-                                "lands on its tuckus! The Evil Bear falls into a deep sleep. The Evil Bear will sleep another year until a new hope" +
-                                "arises.");
+                            Console.WriteLine("Narrator: In the Northern Room you confront the Evil Bear with the sandwich of hope. The Evil Bear lunges at you! " +
+                                              "Janet yells: GO FORTH AND FEAR NO DARKNESS! " +
+                                              "Narrator: You shove the sandwich into its maw! The bear burps! Stumbles back and " +
+                                              "lands on its tuckus! The Evil Bear falls into a deep sleep. The Evil Bear will sleep another year until a new hope arises.");
+
 
 
                             EventSuccess = true;
                         }
                         else
                         {
-                            Console.WriteLine("I'll have this sandwich! You and your friends! Bahahaha");
+                            Console.WriteLine("Evil Bear: I'll have this sandwich! You and your friends! Bahahaha");
 
                             EventFail = true;
                         }
@@ -189,7 +205,7 @@ namespace ChooseYourOwnAdventure
                         Console.WriteLine("You go to the East room.");
                         if (!HasMetJannette)
                         {
-                            Console.WriteLine("Hiya I'm Janet! I'll be helping you with your doomed quest to put the bear back to sleep!");
+                            Console.WriteLine("Janet: Hiya I'm Janet! I'll be helping you with your doomed quest to put the bear back to sleep!");
                             HasMetJannette = true; 
                             //Jannette introduces herself
                         }
@@ -197,35 +213,35 @@ namespace ChooseYourOwnAdventure
                         {
                             if (HasSandwich)
                             {
-                                Console.WriteLine("We have the sandwich! Now its time for you to bite it! This will be exciting to watch. " +
-                                                "I've only seen 7 succeed and 942 fail. Based on your muscle mass, i'm betting on the bear!");
+                                Console.WriteLine("Janet:We have the sandwich! Now its time for you to bite it! This will be exciting to watch. " +
+                                                 "I've only seen 7 succeed and 942 fail. Based on your muscle mass, i'm betting on the bear!");
                                 //Let's feed the bear!
                             }
                             else
                             {
                                 //Jannette gets the sandwich
-                                Console.WriteLine("Ok, I have acquired the sandwich. Are you sure you don't want to eat it yourself? Lets be fair. " +
-                                                  "You can either have a bomb last meal or be a meal and lose the magic sandwich");
+                                Console.WriteLine("Janet: Ok, I have acquired the sandwich. Are you sure you don't want to eat it yourself? Lets be fair. " +
+                                                  "You can either have a delicious last meal or be a meal and lose the magic sandwich");
                                 HasSandwich = true;
                             }
                         }
                         else
                         {
                             //Jannette drops a hint?
-                            Console.WriteLine(" Oh were you hoping for help? Maybe throw your hands up and it'll get freightened that works 0% of the time!" +
+                            Console.WriteLine("Janet:Oh were you hoping for help? Maybe throw your hands up and it'll get freightened that works 0% of the time!" +
                                                 "Maybe you'll be the first. ");
                         }
 
-                        Console.WriteLine("You return to the center room.");
+                        Console.WriteLine("Narrator: You return to the center room.");
                         break;
 
                     case "s":
                     case "south":
-                        Console.WriteLine("You go to the South room.");
+                        Console.WriteLine("Narrator:You go to the South room.");
                         if (!HasMetRodrigquez)
                         { 
                             //Desription of Rod
-                             Console.WriteLine("My friend! I am Rodriguez de la cruz the 32nd and a half! " +
+                             Console.WriteLine("Rodriguez: My friend! I am Rodriguez de la cruz the 32nd and a half! " +
                                                 "! Don't listen to miss wet blanket over there! You've got this eh!?");
                             HasMetRodrigquez = true;
                         }
@@ -233,28 +249,29 @@ namespace ChooseYourOwnAdventure
                         if (HasKey)
                         {
                             //Rodriguez drops a hint?
-                            Console.WriteLine("Jannette and I have been stuck in this cave for years waiting for someone to feed that mangey miscreant!" +
-                                "I believe you are the one! And you shut it jannette! Don't mind her, she just likes watching the new challenger get torn" +
-                                "limb from limb. You must get the sandwich into the bears mouth. I assume taking your arm out of it is your preference");
+                            Console.WriteLine("Rodriguez: Janet and I have been stuck in this cave for years waiting for " +
+                                "someone to feed that mangey miscreant!" + "I believe you are the one!  Don't mind her, " +
+                                "she just likes watching the new challenger get torn" + "limb from limb. You must get the " +
+                                "sandwich into the bears mouth. Watch for the teeth");
                         }
                         else
                         {
-                            Console.WriteLine(" Here is the key my friend. Free our souls of this place and put that evil bear back to sleep forever!");
+                            Console.WriteLine("Rodriguez: Here is the key my friend. Free our souls of this place and put that evil bear back to sleep forever!");
                             HasKey = true;
                         }
 
-                        Console.WriteLine("You return to the center room.");
+                        Console.WriteLine("Narrator: You return to the center room.");
                         break;
 
                     case "q":
                     case "quit":
-                        Console.WriteLine("Do you want to quit? 1 yes, 2 no.");
+                        Console.WriteLine("Narrator:Do you want to quit? 1 yes, 2 no.");
                         quitResponse = Console.ReadLine();
 
                         break;
 
                     default:
-                        Console.WriteLine("Sorry, " + Response + " not recognized, please try again.");
+                        Console.WriteLine("Narrator: Sorry, " + Response + " not recognized, please try again.");
                         break;
                 }
 
@@ -270,12 +287,13 @@ namespace ChooseYourOwnAdventure
 
             if (EventSuccess)
             {
-                Console.WriteLine("Congrats! Jannette and Rodriguez are free! And you go home victorous and with a completed code louisville project!!!");
+                Console.WriteLine("Narrator:Congrats! Janet and Rodriguez are free! And you go home victorous and with a completed code louisville project!!!");
             }
 
             if (EventFail)
             {
-                Console.WriteLine("Oh no! The Evil Bear has eaten " + Player.Name + ", Jannette, and Rodriguez! Maybe next time you won't go north without a plan...");
+                Console.WriteLine("Narrator: Oh no! The Evil Bear has eaten " + Player.Name + ", " +
+                                 "Jannette, and Rodriguez! Maybe next time you won't go north without a plan...");
             }
 
 
