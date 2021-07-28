@@ -60,25 +60,6 @@ namespace ChooseYourOwnAdventure
             return CharList;
         }
 
-
-         // Code no longer in use
-
-        /*
-        public void Credits(List<Character> CList)
-        {
-            foreach (Character c in CList)
-            {
-                Console.WriteLine("Character: " + c.Name + " is " + c.CalculateAge() + " years old, was born on " + c.BirthDate + " and has equpped:");
-                foreach (Item i in c.Inventory)
-                {
-                    Console.WriteLine("     a " + i.ItemName);
-                };
-            }
-        }
-        */
-
-
-
         //Calculate and display data based on an external factor(ex: get the current date, and
         //display how many days remaining until some event) The user inputs a date and the real time days until their next birthday is the output//
         public Character GeneratePlayer()
